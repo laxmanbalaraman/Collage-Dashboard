@@ -10,10 +10,12 @@ mongoose
   .connect("mongodb://localhost:27017/College")
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error(err.message));
-app.use("/college", college);
+
+app.use("/api/college", college);
 app.use("/", (req, res) => {
   res.status(200).send("Server is Live...");
 });
+
 app.listen("5000", () => {
   console.log("Server is running...");
 });
