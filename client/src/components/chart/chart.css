@@ -1,0 +1,10 @@
+.chart {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+}
+
+.chart-elem {
+  text-align: center;
+}
