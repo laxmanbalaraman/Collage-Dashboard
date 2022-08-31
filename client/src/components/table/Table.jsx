@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
 import Alert from "react-bootstrap/Alert";
+import { Link } from "react-router-dom";
 
 function TableList({ param }) {
   const [col, setCol] = useState([]);
@@ -19,6 +20,7 @@ function TableList({ param }) {
   useEffect(() => {
     const showList = async () => {
       col.length = 0;
+      const tempCol = [];
       const key = Object.keys(param)[0];
       const value = param[key];
       console.log(`/college?${key}=${value}`);
@@ -26,9 +28,9 @@ function TableList({ param }) {
       college.data.map((clg) => {
         delete clg.Students;
         delete clg._id;
-        col.push(Object.values(clg));
+        tempCol.push(Object.values(clg));
       });
-      setCol(col);
+      setCol([...tempCol]);
     };
 
     if (param) {
@@ -41,6 +43,13 @@ function TableList({ param }) {
     <div>
       {param ? (
         <center>
+          <Alert
+            key="info"
+            style={{ margin: "2rem", width: "40%" }}
+            variant="info"
+          >
+            Click on the college to view students list
+          </Alert>
           <Table striped bordered hover style={{ width: "80%" }}>
             <thead>
               <tr>
@@ -53,7 +62,11 @@ function TableList({ param }) {
               {col.map((college) => (
                 <tr>
                   {college.map((cell) => (
-                    <td>{cell}</td>
+                    <td>
+                      <Link className="link" to={`/college/${college[0]}`}>
+                        {cell}
+                      </Link>
+                    </td>
                   ))}
                 </tr>
               ))}
@@ -67,7 +80,7 @@ function TableList({ param }) {
             style={{ margin: "2rem", width: "40%" }}
             variant="info"
           >
-            Click on the sector to view the list of Colleges
+            Click on the sector to view the list of Colleges on that category
           </Alert>
         </center>
       )}

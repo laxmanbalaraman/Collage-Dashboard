@@ -7,12 +7,16 @@ import StateChart from "./components/stateChart";
 import Chart from "./components/chart/chart";
 import "bootstrap/dist/css/bootstrap.min.css";
 import StudentList from "./components/studentList/studentList";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <Chart />
-    </div>
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<Chart />} />
+        <Route exact path="/college/:collegeId" element={<StudentList />} />
+      </Routes>
+    </Router>
   );
 }
 
