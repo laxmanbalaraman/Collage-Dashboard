@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 import axios from "axios";
 
-function CourseChart() {
+function CourseChart({ setParam }) {
   const [course, setCourse] = useState([]);
   const [count, setCount] = useState([]);
 
@@ -41,6 +41,9 @@ function CourseChart() {
           chart: {
             events: {
               dataPointSelection: (event, chartContext, config) => {
+                setParam({
+                  course: config.w.config.labels[config.dataPointIndex],
+                });
                 console.log(config.w.config.labels[config.dataPointIndex]);
               },
             },

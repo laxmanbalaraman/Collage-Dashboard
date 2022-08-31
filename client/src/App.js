@@ -5,6 +5,7 @@ import SearchCollege from "./components/searchCollege";
 import CourseChart from "./components/courseChart";
 import StateChart from "./components/stateChart";
 import Chart from "./components/chart/chart";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (

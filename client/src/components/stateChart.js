@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 import axios from "axios";
 
-function StateChart() {
+function StateChart({ setParam }) {
   const [state, setstate] = useState([]);
   const [count, setCount] = useState([]);
 
@@ -34,6 +34,16 @@ function StateChart() {
           title: {
             text: "State-wise college Distribution",
             align: "center",
+          },
+          chart: {
+            events: {
+              dataPointSelection: (event, chartContext, config) => {
+                setParam({
+                  state: config.w.config.labels[config.dataPointIndex],
+                });
+                console.log(config.w.config.labels[config.dataPointIndex]);
+              },
+            },
           },
         }}
       />

@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
     } else if (course) {
       if (course) {
         console.log(course);
-        college = await College.find({ Course: course });
+        college = await College.find({ Courses: course });
         console.log(college);
         res.status(200).send(college);
       }
