@@ -8,7 +8,9 @@ function CourseChart({ setParam }) {
 
   useEffect(() => {
     const getCourse = async () => {
-      const res = await axios.get("/college/count/course");
+      const res = await axios.get(
+        "https://my-college-dashboard.herokuapp.com/api/college/count/course"
+      );
       console.log(res);
       console.log(res.data.length);
       for (let i = 0; i < res.data.length; i++) {

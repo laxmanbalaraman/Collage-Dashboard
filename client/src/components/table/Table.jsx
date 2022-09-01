@@ -44,9 +44,9 @@ function TableList({ param }) {
       {param ? (
         <center>
           <Alert
-            key="info"
+            key="warning"
             style={{ margin: "2rem", width: "40%" }}
-            variant="info"
+            variant="warning"
           >
             Click on the college to view students list
           </Alert>
